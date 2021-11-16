@@ -6,7 +6,7 @@
 session_start();
 
 // Authenticate user.
-$a = authenticate($d['logon_username'], $d['logon_pswd'], $db);
+$a = authenticate($d['logon_username'], $d['logon_pswd']);
 $authenticated = $a["authenticated"];
 $error = $a["error"];
 // Logoff.
@@ -77,7 +77,7 @@ function display_logon($db, $error) {
 	echo "<div class='panel-heading'><strong>Diablo Timing</strong></div>";
 	echo "<div class='panel-body'>";
 	// Display the form fields.
-	display_form_fields($db);
+	//display_form_fields($db);
 	echo "<button class='btn btn-lg btn-primary btn-block' type='submit'>Sign In</button>";
 	// Display error or informational message.
 	if (!empty($error)) echo "<div class='alert alert-danger' role='alert'>$error</div>";
@@ -88,7 +88,7 @@ function display_logon($db, $error) {
   echo "</body>";
   echo "</html>";
 }
-function display_form_fields($db) {
+function display_form_fields() {
 	$form = "logon_admin";
   $fields = array();
   if ($_POST["logon_cancel"] != "Cancel" AND !empty($_POST["fn"])) {
